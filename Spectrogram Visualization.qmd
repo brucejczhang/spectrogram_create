@@ -1,0 +1,30 @@
+---
+title: "spectrogram"
+format: html
+---
+
+```{r}
+# Install necessary packages
+install.packages("tuneR", dependencies = TRUE, type = "binary")
+install.packages("seewave")
+
+# Load libraries
+library(tuneR)
+library(seewave)
+
+# Load the audio file
+file_path <- "/Users/file_path/target_audio_file.wav" # Replace with file path of target audio file
+
+# Read the audio file
+audio <- readWave(file_path)
+
+# Generate the spectrogram
+spectro(audio, f = audio@samp.rate, ovlp = 50, flim = c(0, 5), dB = "max0")
+
+# Save the Spectrogram as a large high-resolution jpg file
+ggsave(filename = "/Users/file_path/Output_figure.jpg",
+       width = 8, height = 6, dpi = 1200) # Replace with file path of desired saving location and desired file name
+
+```
+
+
